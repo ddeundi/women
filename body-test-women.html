@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BODY TYPE ♀ — 네 몸 속 여신은?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Warm studio palette — 초록 대신 따뜻한 샌드 + 에스프레소 잉크 */
+    --forest:#241b17; --sage:#efe5d6; --olive:#e7dbc6; --cream:#faf5ec; --moss:#d8c5a6;
+    --ease:cubic-bezier(0.16,1,0.3,1);
+    --shadow:0 30px 60px -20px rgba(45,30,22,.30);
+    --accent:#ef6fa6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Inter","Apple SD Gothic Neo",system-ui,sans-serif;color:var(--forest);
+    background:
+      radial-gradient(1200px 700px at 80% -5%, var(--olive), transparent 55%),
+      radial-gradient(900px 600px at -5% 100%, var(--moss), transparent 50%),
+      var(--cream);
+    min-height:100vh;line-height:1.55;-webkit-font-smoothing:antialiased;padding:104px 20px 60px;
+  }
+  .disp{font-family:"Anton","Black Han Sans",sans-serif;font-weight:400;letter-spacing:-.03em;line-height:.82}
+  .label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3em;color:var(--forest);opacity:.65}
+
+  .noise{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px 28px}
+  .logo{font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:15px}
+  .navpill{display:flex;gap:20px;padding:11px 22px;border-radius:40px;background:#ffffff2e;
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid #ffffff55}
+  .navpill a{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--forest);text-decoration:none;opacity:.7;cursor:pointer}
+  .badge{background:#fff;border-radius:30px;padding:7px 15px;font-size:11px;font-weight:700;letter-spacing:.1em;box-shadow:var(--shadow)}
+  @media(max-width:560px){.navpill{display:none}}
+
+  .app{width:100%;max-width:620px;margin:0 auto;position:relative}
+  .screen{display:none} .screen.on{display:block}
+
+  .reveal{opacity:1;transform:none}
+  .reveal.in{animation:revealUp 1.1s var(--ease)}
+  @keyframes revealUp{from{opacity:0;transform:translateY(90px)}to{opacity:1;transform:none}}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(4deg)}}
+  @keyframes floatB{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-26px) rotate(-5deg)}}
+
+  .block-card{border-radius:2.5rem;padding:46px 38px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .sage{background:var(--sage)} .olive{background:var(--olive)} .forest{background:var(--forest);color:var(--cream)}
+
+  .hero{text-align:center;border-radius:5rem;position:relative}
+  .hero .label{margin-bottom:18px;display:block}
+  .hero h1{font-size:clamp(54px,16vw,140px);margin:6px 0 4px}
+  .hero h1 .ln{display:block}
+  .hero h1 .let{display:inline-block}
+  .hero.in h1 .let{animation:letUp .9s var(--ease) both}
+  @keyframes letUp{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:none}}
+  .hero .sub{max-width:450px;margin:24px auto 0;font-size:15px;opacity:.85}
+  .gallery{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:26px}
+  .gchip{width:92px;text-align:center}
+  .gav{width:92px;height:112px;border-radius:1.6rem;background:var(--cream);box-shadow:var(--shadow);overflow:hidden}
+  .gchip span{display:block;margin-top:8px;font-size:11px;font-weight:700}
+  @media(max-width:560px){.gchip{width:60px}.gav{width:60px;height:76px}.gchip span{font-size:9px}}
+  .floaty{position:absolute;width:80px;height:104px;border-radius:2rem;overflow:hidden;background:var(--cream);box-shadow:var(--shadow);z-index:2}
+  .floaty svg{width:100%;height:100%}
+  .f1{top:1%;left:-3%;animation:float 7s var(--ease) infinite}
+  .f2{top:8%;right:-4%;animation:floatB 8s var(--ease) infinite}
+  @media(max-width:560px){.f1,.f2{display:none}}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;
+    font-family:"Inter",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:13px;
+    border:none;background:var(--forest);color:var(--cream);padding:20px 40px;border-radius:40px;box-shadow:var(--shadow);transition:transform .5s var(--ease)}
+  .btn:hover{transform:translateY(-4px)}
+  .btn.alt{background:var(--cream);color:var(--forest)}
+  .btn.ghost{background:transparent;color:var(--forest);box-shadow:none;border:1.5px solid var(--forest)}
+  .btn.block{display:flex;width:100%;margin-top:32px}
+
+  .ptitle{font-size:clamp(34px,8vw,60px);margin-bottom:6px}
+  .psub{font-size:14px;opacity:.8;margin-bottom:30px}
+  .field{margin-bottom:22px} .field>.label{display:block;margin-bottom:11px}
+  .row2{display:flex;gap:14px} .row2 .field{flex:1}
+  .inp{display:flex;align-items:center;gap:8px;background:var(--cream);border-radius:1.5rem;padding:15px 18px;box-shadow:0 12px 24px -16px rgba(45,30,22,.4)}
+  .inp input{flex:1;border:none;background:none;font-family:inherit;font-size:21px;font-weight:700;color:var(--forest);outline:none;width:100%}
+  .inp input::placeholder{color:var(--forest);opacity:.3}
+  .inp .u{font-weight:700;opacity:.45;font-size:13px}
+  .skip{text-align:center;margin-top:14px;font-size:12px;opacity:.55}
+
+  .qhead{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px}
+  .qnum{font-size:clamp(52px,14vw,100px)} .qnum small{font-size:.28em;opacity:.4}
+  .bar{height:8px;background:#ffffff7a;border-radius:10px;overflow:hidden;margin-bottom:28px}
+  .bar>i{display:block;height:100%;width:0;border-radius:10px;background:var(--forest);transition:width .6s var(--ease)}
+  .qtext{font-size:clamp(21px,4.2vw,29px);font-weight:700;letter-spacing:-.02em;line-height:1.3;margin-bottom:24px}
+  .opt{display:flex;align-items:center;gap:16px;width:100%;text-align:left;cursor:pointer;background:var(--cream);
+    border:1.5px solid transparent;color:var(--forest);font-family:inherit;padding:17px 18px;border-radius:1.6rem;
+    margin-bottom:12px;box-shadow:0 12px 24px -16px rgba(45,30,22,.4);transition:transform .45s var(--ease),border-color .3s,background .3s}
+  .opt:hover{transform:translateX(8px);border-color:var(--forest);background:#fff}
+  .opt .ico{font-family:"Anton",sans-serif;font-size:20px;width:48px;height:48px;flex:none;border-radius:1.1rem;background:var(--olive);display:grid;place-items:center;color:var(--forest)}
+  .opt .tx{font-size:15.5px;font-weight:500;line-height:1.4}
+  .back{cursor:pointer;background:none;border:none;font-family:inherit;font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--forest);opacity:.6;padding:6px}
+
+  .r-avatar{width:155px;height:200px;margin:0 auto;display:block;animation:float 7s var(--ease) infinite;filter:drop-shadow(0 18px 28px rgba(0,0,0,.3))}
+  .r-kicker{text-align:center;margin-top:14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.34em;color:var(--accent)}
+  .r-name{text-align:center;font-size:clamp(44px,11vw,86px);margin-top:6px;color:var(--cream)}
+  .r-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0 4px}
+  .r-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--forest);background:var(--accent);padding:7px 14px;border-radius:30px}
+  .r-block{background:#ffffff14;border:1px solid #ffffff1f;border-radius:1.8rem;padding:22px 24px;margin-top:16px}
+  .r-block h4{font-size:11px;text-transform:uppercase;letter-spacing:.24em;color:var(--accent);margin-bottom:10px}
+  .r-block p{font-size:15px;color:var(--sage);line-height:1.65}
+  .plan div{padding:11px 0;border-bottom:1px solid #ffffff14} .plan div:last-child{border-bottom:none}
+  .plan .label{display:block;color:var(--accent);opacity:.9;margin-bottom:3px}
+  .plan p{color:var(--sage);font-size:14.5px} .plan p .dim{opacity:.55;font-weight:400}
+
+  .score{margin:12px 0}
+  .score.win{background:#ffffff12;border-radius:1.2rem;padding:12px 14px;margin:10px -6px}
+  .score .sline{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+  .score .sn{display:flex;align-items:center;font-size:13.5px;color:var(--sage);font-weight:500}
+  .score .rank{font-style:normal;display:inline-grid;place-items:center;width:21px;height:21px;border-radius:7px;background:#ffffff22;font-size:11px;font-weight:700;color:var(--cream);margin-right:8px}
+  .score .sv{font-size:13px;color:var(--cream);font-weight:700;opacity:.8}
+  .score .st{height:15px;background:#ffffff14;border-radius:8px;overflow:hidden}
+  .score .sf{height:100%;width:0;border-radius:8px;transition:width 1s var(--ease)}
+  .score.win .sn{color:var(--cream);font-weight:700}
+  .score.win .rank{background:var(--accent);color:var(--forest)}
+  .score.win .sv{opacity:1;font-size:14.5px;color:var(--accent)}
+  .score.win .sf{box-shadow:0 0 16px -2px var(--accent)}
+
+  .mate{display:flex;gap:12px}
+  .matec{flex:1;background:#ffffff10;border:1px solid #ffffff1a;border-radius:1.4rem;padding:16px 12px;text-align:center}
+  .matec .mav{width:56px;height:72px;margin:0 auto 9px;border-radius:1rem;overflow:hidden;background:var(--cream)}
+  .matec .mt{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+  .matec.good .mt{color:#9be7b0} .matec.bad .mt{color:#f0a79e}
+  .matec .mn{font-size:14.5px;font-weight:700;color:var(--cream);margin-bottom:5px}
+  .matec .mr{font-size:12px;color:var(--sage);line-height:1.5}
+
+  .r-actions{display:flex;gap:12px;margin-top:30px}
+  .r-actions .btn{flex:1;padding:18px 18px}
+  .r-actions .btn.ghost{border-color:var(--accent);color:var(--accent)}
+
+  footer{text-align:center;margin:46px auto 0;max-width:620px}
+  footer .label{opacity:.4;font-size:10px}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<nav>
+  <div class="logo">— BODYTYPE ♀</div>
+  <div class="navpill"><a id="navTest">TEST</a><a id="navRestart">RESTART</a><a>ABOUT</a></div>
+  <div class="badge">5 / WOMEN'S EDITION</div>
+</nav>
+
+<div class="app">
+
+  <!-- 인트로 -->
+  <section class="screen on" id="intro">
+    <div class="block-card sage hero reveal" id="hero">
+      <div class="floaty f1" id="fl1"></div>
+      <div class="floaty f2" id="fl2"></div>
+      <span class="label">BODY CHARACTER TEST · WOMEN</span>
+      <h1 class="disp" id="heroTitle"><span class="ln">닮고 싶은</span><span class="ln">그 몸은?</span></h1>
+      <p class="sub">운동 취향만 답하면 5초 만에 밝혀지는 나의 ‘몸 캐릭터’.
+        키·체중에 맞춘 <b>운동·식단·칼로리 처방</b>까지 한 번에.</p>
+      <div class="gallery" id="gallery"></div>
+      <button class="btn block" id="startBtn">내 캐릭터 찾기 →</button>
+    </div>
+  </section>
+
+  <!-- 프로필 -->
+  <section class="screen" id="profile">
+    <div class="block-card olive reveal" id="profileCard">
+      <h2 class="ptitle disp">먼저, 당신은?</h2>
+      <p class="psub">키·몸무게를 알려주면 결과 처방(운동·단백질·칼로리)을 정확히 맞춰드려요.</p>
+      <div class="row2">
+        <div class="field">
+          <span class="label">키 / Height</span>
+          <div class="inp"><input id="hInput" type="number" inputmode="decimal" placeholder="163" min="120" max="210"><span class="u">CM</span></div>
+        </div>
+        <div class="field">
+          <span class="label">몸무게 / Weight</span>
+          <div class="inp"><input id="wInput" type="number" inputmode="decimal" placeholder="52" min="20" max="180"><span class="u">KG</span></div>
+        </div>
+      </div>
+      <button class="btn block" id="beginBtn">테스트 시작 →</button>
+      <p class="skip">입력 없이 시작해도 돼요 — 처방은 일반 기준으로 안내됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 질문 -->
+  <section class="screen" id="quiz">
+    <div class="block-card olive reveal" id="quizCard">
+      <div class="qhead">
+        <div class="qnum disp"><span id="qnow">01</span><small> / 05</small></div>
+        <button class="back" id="backBtn">← 이전</button>
+      </div>
+      <div class="bar"><i id="barfill"></i></div>
+      <div class="qtext" id="qtext"></div>
+      <div id="opts"></div>
+    </div>
+  </section>
+
+  <!-- 결과 -->
+  <section class="screen" id="result">
+    <div class="block-card forest reveal" id="resultCard">
+      <div class="r-avatar" id="rAvatar"></div>
+      <div class="r-kicker" id="rKicker"></div>
+      <div class="r-name disp" id="rName"></div>
+      <div class="r-tags" id="rTags"></div>
+      <div class="r-block"><h4>Why this character / 왜 이 캐릭터일까</h4><p id="rReason"></p></div>
+      <div class="r-block"><h4>One line / 한 줄 설명</h4><p id="rDesc"></p></div>
+      <div class="r-block"><h4>Personalized / 너만을 위한 처방</h4><div class="plan" id="rPlan"></div></div>
+      <div class="r-block"><h4>Workout mate / 운동 메이트 궁합</h4><div class="mate" id="rMate"></div></div>
+      <div class="r-block"><h4>Your scores / 나의 성향 점수</h4><div id="rScores"></div></div>
+      <div class="r-actions">
+        <button class="btn ghost" id="againBtn">다시하기</button>
+        <button class="btn alt" id="shareBtn">친구에게 추천 🔗</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer><span class="label">— Warm studio · Sand &amp; Ink · Women's Edition · Made with Claude Code</span></footer>
+
+<script>
+/* ===== 여성 전신 실루엣 아바타 (가슴·잘록허리·체형차 반영) ===== */
+const SIL={
+  wonder:{hR:13,sw:26,bw:20,ww:16,hw:22,aw:7,legW:11,legBot:206,fig:"#8c1d2a",bg:"#f3b1b7",sym:"🦸‍♀️",line:true},
+  barbie:{hR:12,sw:18,bw:15,ww:11,hw:18,aw:5,legW:7,legBot:222,fig:"#9c2f63",bg:"#f7c1da",sym:"👑",line:false},
+  juliet:{hR:12,sw:16,bw:13,ww:11,hw:15,aw:4.5,legW:7,legBot:206,fig:"#2d6e93",bg:"#c2e3f4",sym:"🥀",line:false},
+  moana:{hR:13,sw:22,bw:20,ww:19,hw:24,aw:8,legW:13,legBot:202,fig:"#1f6e45",bg:"#b3e0c3",sym:"🌺",line:false},
+  ariel:{hR:12,sw:22,bw:23,ww:11,hw:26,aw:6,legW:11,legBot:210,fig:"#9c531a",bg:"#f8cb9c",sym:"🧜‍♀️",line:false}
+};
+function avatar(key,sym){
+  const p=SIL[key],cx=60,headCy=28,shoulderY=52,bustY=72,waistY=104,hipY=128;
+  const hair=`<rect x="${cx-p.hR-3}" y="${headCy-6}" width="${(p.hR+3)*2}" height="48" rx="${p.hR+1}" fill="${p.fig}"/>`;
+  const legGapX=p.hw*0.45, legH=p.legBot-hipY+2;
+  const legL=`<rect x="${cx-legGapX-p.legW/2}" y="${hipY-2}" width="${p.legW}" height="${legH}" rx="${p.legW/2}" fill="${p.fig}"/>`;
+  const legR=`<rect x="${cx+legGapX-p.legW/2}" y="${hipY-2}" width="${p.legW}" height="${legH}" rx="${p.legW/2}" fill="${p.fig}"/>`;
+  const armL=`<rect x="${cx-p.sw-p.aw/2}" y="${shoulderY+2}" width="${p.aw}" height="${waistY-shoulderY+6}" rx="${p.aw/2}" fill="${p.fig}"/>`;
+  const armR=`<rect x="${cx+p.sw-p.aw/2}" y="${shoulderY+2}" width="${p.aw}" height="${waistY-shoulderY+6}" rx="${p.aw/2}" fill="${p.fig}"/>`;
+  const torso=`<path d="M ${cx-p.sw} ${shoulderY} Q ${cx} ${shoulderY-10} ${cx+p.sw} ${shoulderY} Q ${cx+p.bw} ${bustY} ${cx+p.ww} ${waistY} Q ${cx+p.hw} ${hipY-6} ${cx+p.hw} ${hipY} L ${cx-p.hw} ${hipY} Q ${cx-p.hw} ${hipY-6} ${cx-p.ww} ${waistY} Q ${cx-p.bw} ${bustY} ${cx-p.sw} ${shoulderY} Z" fill="${p.fig}"/>`;
+  const def=p.line?`<line x1="60" y1="${bustY+8}" x2="60" y2="${waistY-2}" stroke="${p.bg}" stroke-width="2.2" opacity="0.42"/>`:"";
+  const neck=`<rect x="55" y="40" width="10" height="14" fill="${p.fig}"/>`;
+  const head=`<circle cx="60" cy="${headCy}" r="${p.hR}" fill="${p.fig}"/>`;
+  const badge=sym?`<circle cx="101" cy="152" r="16" fill="#fefae0"/><text x="101" y="158" font-size="17" text-anchor="middle">${p.sym}</text>`:"";
+  return `<svg viewBox="0 0 120 232" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="122" rx="52" ry="106" fill="${p.bg}" opacity="0.4"/>${hair}${legL}${legR}${armL}${armR}${torso}${def}${neck}${head}${badge}</svg>`;
+}
+
+/* ===== 결과 캐릭터 (여성) ===== */
+const CHARS={
+  wonder:{kicker:"THE STRONG GODDESS",name:"원더우먼",accent:"#e23b4e",tags:["탄탄 근육","강인한 코어","애슬레틱"],
+    reason:"당신은 ‘예쁜’보다 ‘강한’이 먼저예요. 무게도 들고, 땀도 제대로 빼고, 꾸준히 몸을 단련하는 답이 가득했죠. 탄탄한 코어와 또렷한 어깨·등 라인 — 강함이 곧 아름다움인 여전사, 원더우먼입니다.",
+    desc:"군살 없이 탄탄하게 다져진 애슬레틱 바디. 자세부터 다르고, 건강한 힘이 느껴지는 ‘강한 여신’ 체형이에요."},
+  barbie:{kicker:"THE ENDLESS LINE",name:"바비",accent:"#ef6fa6",tags:["롱 라인","늘씬·유연","쭉쭉 비율"],
+    reason:"당신이 원하는 건 끝없이 뻗은 늘씬한 라인. 필라테스·요가로 유연성을 챙기고 가볍고 깔끔한 식단을 골랐죠. 길고 곧은 다리에 잘록한 허리 — 전 세계가 아는 ‘비율의 아이콘’ 바비예요.",
+    desc:"근육 볼륨보다 길어 보이는 비율과 또렷한 라인이 핵심. 길고 유연한 몸, 우아한 자세를 추구하는 타입이에요."},
+  juliet:{kicker:"THE FRAGILE MUSE",name:"줄리엣",accent:"#54b6e6",tags:["여리여리","가녀린 라인","청초"],
+    reason:"당신은 강하게 단련된 몸보다 가녀리고 청초한 분위기를 꿈꿔요. 무리한 운동 대신 가벼운 스트레칭, 부담 없는 식사를 택했죠. 건드리면 부서질 듯 여리여리한 — 비련의 여주인공 줄리엣입니다.",
+    desc:"근육보다 가녀린 실루엣과 하늘하늘한 분위기가 핵심. 단, 여린 라인일수록 영양·근력의 ‘기본 체력’은 꼭 챙겨야 예뻐요."},
+  moana:{kicker:"THE HEALTHY GLOW",name:"모아나",accent:"#3bb277",tags:["건강미","자연스러운 탄탄","생기"],
+    reason:"당신에게 예쁨은 곧 건강함이에요. 빡세게 깎기보다 신나게 움직이고 잘 먹는 답이 많았죠. 적당히 탄탄하면서 부드러운, 생기 가득한 자연체형 — 바다처럼 건강한 모아나입니다.",
+    desc:"마르지도 과하지도 않은, 활동적이고 생기 있는 ‘건강미’ 체형. 잘 먹고 잘 움직이는 사람의 자연스러운 몸이에요."},
+  ariel:{kicker:"THE HOURGLASS",name:"에리얼",accent:"#ef8a36",tags:["모래시계","S라인","볼륨 곡선"],
+    reason:"당신이 그리는 몸은 잘록한 허리에 볼륨이 살아있는 곡선. 둔근·하체·코어 운동으로 라인을 만드는 답이 많았죠. 가는 허리와 풍성한 곡선의 완벽한 균형 — 모래시계의 주인공 에리얼이에요.",
+    desc:"가는 허리를 중심으로 위아래 볼륨이 살아있는 S라인. 곡선미와 여성스러운 실루엣을 추구하는 타입이에요."}
+};
+
+/* 키·체중 반영 처방 (여성 기준) */
+const PLAN={
+  wonder:{freq:"주 4~5회 (웨이트 + 코어)",kcal:"유지 + 약간 잉여 (탄탄하게)",pf:1.8,adj:100,
+    ex:"등·어깨·복근으로 탄탄한 코어, 하체로 파워 라인 — 점진적 중량으로 단련"},
+  barbie:{freq:"주 3~4회 (필라테스·요가 + 가벼운 웨이트)",kcal:"유지~약간 적자, 클린·소식",pf:1.4,adj:-200,
+    ex:"필라테스·요가로 길고 유연한 라인, 하체·코어로 곧은 비율 강조"},
+  juliet:{freq:"주 2~3회 (스트레칭·가벼운 홈트)",kcal:"무리 없는 유지, 균형 잡힌 세 끼",pf:1.3,adj:0,
+    ex:"요가·스트레칭으로 부드러운 라인과 자세 — 무리한 다이어트보다 ‘건강한 가녀림’"},
+  moana:{freq:"주 3~4회 (전신 순환 + 유산소)",kcal:"균형 유지, 든든하게 잘 먹기",pf:1.5,adj:0,
+    ex:"전신 순환운동 + 유산소로 건강하게 탄탄, 활동량 늘려 생기 유지"},
+  ariel:{freq:"주 4~5회 (둔근·하체 + 코어)",kcal:"유지, 단백질·균형 식단",pf:1.6,adj:-100,
+    ex:"둔근·하체로 힙업, 코어로 잘록한 허리 — 위아래 볼륨 살려 S라인 강조"}
+};
+
+/* 운동 메이트 궁합 */
+const MATE={
+  wonder:{good:"moana",goodR:"활동적인 둘! 신나게 땀 흘리며 함께 운동해요.",bad:"juliet",badR:"운동 강도가 너무 달라 페이스 맞추기가 힘들어요."},
+  barbie:{good:"ariel",goodR:"라인·코어 운동 취향이 비슷한 우아한 짝꿍.",bad:"wonder",badR:"고중량 근력 vs 라인 운동, 결이 정반대예요."},
+  juliet:{good:"barbie",goodR:"가볍고 우아한 운동 취향이 잘 맞아요.",bad:"wonder",badR:"빡센 근력 운동은 줄리엣에겐 너무 버거워요."},
+  moana:{good:"wonder",goodR:"에너지 넘치는 둘, 함께라면 운동이 신나요.",bad:"juliet",badR:"활동 에너지 레벨이 너무 달라요."},
+  ariel:{good:"barbie",goodR:"코어·하체 라인을 함께 가꾸는 환상의 짝.",bad:"wonder",badR:"운동 분위기와 목표가 정반대예요."}
+};
+
+/* ===== 질문 (여성 시나리오형) ===== */
+const QUESTIONS=[
+  {q:"거울 앞에 섰을 때, 가장 듣고 싶은 한마디는?",o:[
+    {t:"“등·어깨 탄탄해, 자세부터 남다르다”",k:"wonder"},
+    {t:"“다리 진짜 길다, 비율 완전 모델이야”",k:"barbie"},
+    {t:"“어쩜 이렇게 가녀려, 청초하다”",k:"juliet"},
+    {t:"“건강미 뿜뿜, 생기 넘쳐 보여”",k:"moana"},
+    {t:"“허리 잘록한 거 봐, S라인 미쳤다”",k:"ariel"}]},
+  {q:"솔직히, 일주일 운동 시간 너의 현실은?",o:[
+    {t:"주 4~5번, 웨이트까지 빡세게",k:"wonder"},
+    {t:"주 3~4번, 필라테스·요가 꾸준히",k:"barbie"},
+    {t:"주 1~2번, 가볍게 스트레칭 정도",k:"juliet"},
+    {t:"주 3~4번, 신나게 몸 움직이기",k:"moana"},
+    {t:"주 4~5번, 하체·힙 집중 공략",k:"ariel"}]},
+  {q:"운동하러 가면, 제일 먼저 향하는 곳은?",o:[
+    {t:"웨이트존, 무게 들고 코어 단련",k:"wonder"},
+    {t:"필라테스 기구, 라인부터 정리",k:"barbie"},
+    {t:"매트존, 가볍게 스트레칭",k:"juliet"},
+    {t:"그룹운동·유산소, 땀 쫙 빼기",k:"moana"},
+    {t:"힙·하체 머신 직행, 라인 공략",k:"ariel"}]},
+  {q:"냉장고 문을 활짝 열었다. 너의 손이 가는 건?",o:[
+    {t:"닭가슴살·계란, 단백질부터 챙기기",k:"wonder"},
+    {t:"샐러드·두부, 가볍고 깔끔하게",k:"barbie"},
+    {t:"따뜻한 차에 과일 조금, 소박하게",k:"juliet"},
+    {t:"잡곡밥에 반찬 골고루, 든든한 한 상",k:"moana"},
+    {t:"단백질에 채소, 균형 있게 한 접시",k:"ariel"}]},
+  {q:"내가 갖고 싶은 몸을, 영화 포스터 문구로 만든다면?",o:[
+    {t:"“강하고 빛나는, 여신의 코어”",k:"wonder"},
+    {t:"“끝없이 뻗은, 늘씬한 롱 라인”",k:"barbie"},
+    {t:"“건드리면 부서질 듯, 여리여리”",k:"juliet"},
+    {t:"“건강이 가장 예쁘다, 생기 가득”",k:"moana"},
+    {t:"“잘록과 볼륨, 완벽한 모래시계”",k:"ariel"}]}
+];
+const WEIGHTS=[1,1,1,1,2];
+const TOTALW=WEIGHTS.reduce((a,b)=>a+b,0);
+
+let qi=0; const answers=[]; const profile={weight:null,height:null};
+const $=id=>document.getElementById(id);
+const pad=n=>String(n).padStart(2,"0");
+
+function showScreen(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));
+  $(id).classList.add("on");
+  const card=$(id).querySelector(".reveal");
+  if(card){card.classList.remove("in");requestAnimationFrame(()=>requestAnimationFrame(()=>card.classList.add("in")));}
+}
+
+function buildIntro(){
+  const order=["wonder","barbie","juliet","moana","ariel"];
+  $("gallery").innerHTML=order.map(k=>`<div class="gchip"><div class="gav">${avatar(k,true)}</div><span>${CHARS[k].name}</span></div>`).join("");
+  $("fl1").innerHTML=avatar("wonder",true);
+  $("fl2").innerHTML=avatar("ariel",true);
+}
+function splitHero(){
+  $("heroTitle").querySelectorAll(".ln").forEach((ln,li)=>{
+    const txt=ln.textContent;ln.textContent="";
+    [...txt].forEach((ch,ci)=>{const s=document.createElement("span");s.className="let";s.textContent=ch===" "?" ":ch;
+      s.style.animationDelay=(0.25+(li*txt.length+ci)*0.05)+"s";ln.appendChild(s);});
+  });
+}
+try{buildIntro();splitHero();}catch(e){}
+requestAnimationFrame(()=>requestAnimationFrame(()=>$("hero").classList.add("in")));
+
+function goProfile(){showScreen("profile");}
+function beginQuiz(){
+  const w=parseFloat($("wInput").value),h=parseFloat($("hInput").value);
+  profile.weight=(w>0)?w:null; profile.height=(h>0)?h:null;
+  qi=0;answers.length=0;render();showScreen("quiz");
+}
+function back(){if(qi===0){showScreen("profile");return;}qi--;answers.pop();render();}
+
+function render(){
+  const Q=QUESTIONS[qi];
+  $("qnow").textContent=pad(qi+1);
+  $("barfill").style.width=(qi/QUESTIONS.length*100)+"%";
+  $("qtext").textContent=Q.q;
+  const box=$("opts");box.innerHTML="";
+  Q.o.forEach((op,idx)=>{
+    const b=document.createElement("button");b.className="opt";
+    b.innerHTML=`<span class="ico">${String.fromCharCode(65+idx)}</span><span class="tx">${op.t}</span>`;
+    b.addEventListener("click",()=>choose(op.k));box.appendChild(b);
+  });
+}
+function choose(key){answers[qi]=key;if(qi<QUESTIONS.length-1){qi++;render();}else finish();}
+
+function finish(){
+  const score={wonder:0,barbie:0,juliet:0,moana:0,ariel:0};
+  answers.forEach((k,idx)=>score[k]+=WEIGHTS[idx]);
+  let best=Object.keys(score).reduce((a,b)=>score[b]>score[a]?b:a,"wonder");
+  const top=Math.max(...Object.values(score));
+  const tied=Object.keys(score).filter(k=>score[k]===top);
+  if(tied.length>1&&tied.includes(answers[4]))best=answers[4];
+  $("barfill").style.width="100%";
+  paint(best,score);
+  showScreen("result");
+}
+
+/* 미플린-세인트 지어 (여성, 나이 25 가정) → 하루 칼로리 */
+function calcKcal(key,w,h){
+  if(!w||!h) return null;
+  const bmr = 10*w+6.25*h-5*25-161;
+  const tdee = bmr*1.45;
+  const target = tdee + PLAN[key].adj;
+  return {tdee:Math.round(tdee/50)*50, target:Math.round(target/50)*50};
+}
+
+function paint(key,score){
+  const c=CHARS[key],pl=PLAN[key];
+  document.documentElement.style.setProperty("--accent",c.accent);
+  $("rAvatar").innerHTML=avatar(key,true);
+  $("rKicker").textContent=c.kicker;
+  $("rName").textContent=c.name;
+  $("rTags").innerHTML=c.tags.map(t=>`<span class="r-tag">${t}</span>`).join("");
+  $("rReason").textContent=c.reason;
+  $("rDesc").textContent=c.desc;
+
+  const proteinText=profile.weight
+    ? `약 ${Math.round(profile.weight*pl.pf)}g <span class="dim">(체중 ${profile.weight}kg × ${pl.pf}g)</span>`
+    : `체중 1kg당 약 ${pl.pf}g <span class="dim">(체중 입력 시 자동 계산)</span>`;
+  const kc=calcKcal(key,profile.weight,profile.height);
+  const kcalText=kc
+    ? `${pl.kcal} · 하루 약 <b>${kc.target}kcal</b> <span class="dim">(유지 ${kc.tdee}kcal 기준)</span>`
+    : `${pl.kcal} <span class="dim">(키·체중 입력 시 칼로리 자동 계산)</span>`;
+  const head=`키 ${profile.height?profile.height+"cm":"미입력"} · 체중 ${profile.weight?profile.weight+"kg":"미입력"}`;
+  $("rPlan").innerHTML=`
+    <div><span class="label">기준</span><p class="dim">${head}</p></div>
+    <div><span class="label">추천 운동</span><p>${pl.ex}</p></div>
+    <div><span class="label">주당 빈도</span><p>${pl.freq}</p></div>
+    <div><span class="label">식단 · 칼로리</span><p>${kcalText}</p></div>
+    <div><span class="label">하루 단백질 목표</span><p>${proteinText}</p></div>`;
+
+  const m=MATE[key];
+  $("rMate").innerHTML=`
+    <div class="matec good"><div class="mt">잘 맞아요 💚</div><div class="mav">${avatar(m.good,false)}</div><div class="mn">${CHARS[m.good].name}</div><div class="mr">${m.goodR}</div></div>
+    <div class="matec bad"><div class="mt">안 맞아요 💢</div><div class="mav">${avatar(m.bad,false)}</div><div class="mn">${CHARS[m.bad].name}</div><div class="mr">${m.badR}</div></div>`;
+
+  const rows=Object.keys(score).sort((a,b)=>score[b]-score[a]);
+  $("rScores").innerHTML=rows.map((k,i)=>
+    `<div class="score${k===key?' win':''}">
+       <div class="sline"><span class="sn"><i class="rank">${i+1}</i>${SIL[k].sym} ${CHARS[k].name}</span><span class="sv">${score[k]}점</span></div>
+       <div class="st"><span class="sf" data-w="${Math.round(score[k]/TOTALW*100)}" style="background:${SIL[k].bg}"></span></div>
+     </div>`).join("");
+  requestAnimationFrame(()=>$("rScores").querySelectorAll(".sf").forEach(f=>f.style.width=f.dataset.w+"%"));
+}
+
+function restart(){showScreen("intro");$("hero").classList.add("in");}
+
+function wire(){
+  $("startBtn").addEventListener("click",goProfile);
+  $("beginBtn").addEventListener("click",beginQuiz);
+  $("backBtn").addEventListener("click",back);
+  $("againBtn").addEventListener("click",restart);
+  $("shareBtn").addEventListener("click",restart);
+  $("navTest").addEventListener("click",restart);
+  $("navRestart").addEventListener("click",restart);
+}
+wire();
+</script>
+</body>
+</html>
